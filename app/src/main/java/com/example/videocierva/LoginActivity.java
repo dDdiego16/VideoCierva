@@ -25,8 +25,10 @@ public class LoginActivity extends AppCompatActivity {
         buttonLog.setOnClickListener(view -> {
             if(!validarCampos()) {
                 Toast.makeText(view.getContext(), "Correcto", Toast.LENGTH_SHORT).show();
+                buttonLog.setEnabled(false);
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
