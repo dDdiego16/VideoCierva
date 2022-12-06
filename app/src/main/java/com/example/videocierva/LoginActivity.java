@@ -15,6 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,6 +73,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
             if (!response.isEmpty()) {
+                try {
+                    Listas.usuario.clear();
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    User user = new User();
+                    user.nombre = jsonObject.getString("name_user");
+                    user.correo = jsonObject.getString("mail_user");
+                    user.contraseña = jsonObject.getString("passwd_user");
+                    Listas.usuario.add(user);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 guardarPreferencias();
                 Toast.makeText(LoginActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -100,8 +115,9 @@ public class LoginActivity extends AppCompatActivity {
     private void guardarPreferencias() {
         SharedPreferences preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("usuario", correoLog);
-        editor.putString("password", passwdLog);
+        editor.putString("usuario", Listas.usuario.get(0).correo);
+        editor.putString("password", Listas.usuario.get(0).contraseña);
+        editor.putString("name", Listas.usuario.get(0).nombre);
         editor.putBoolean("sesion", true);
         editor.commit();
     }

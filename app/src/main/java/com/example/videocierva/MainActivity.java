@@ -2,33 +2,36 @@ package com.example.videocierva;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnOpciones;
+    ImageButton miPerfil;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btnOpciones = findViewById(R.id.butOpc);
+        miPerfil = findViewById(R.id.miPerfilbtn);
 
-        btnOpciones.setOnClickListener(view -> {
-            SharedPreferences preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
-            preferences.edit().clear().commit();
-
-            Toast.makeText(MainActivity.this, "Sesión Cerrada", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        miPerfil.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
             startActivity(intent);
-            finish();
         });
+
+        btnOpciones.setOnClickListener((view -> {
+            Intent intent = new Intent(MainActivity.this, OpcionesActivity.class);
+            startActivity(intent);
+        }));
 
     }
 }

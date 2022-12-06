@@ -25,6 +25,7 @@
             android:paddingStart="15dp"/>
 
         <ImageButton
+            android:id="@+id/miPerfilbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -46,7 +47,8 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="180dp"
-            android:src="@drawable/logo_app2" />
+            android:src="@drawable/logo_app2"
+            android:contentDescription="TODO" />
 
         <Button
             android:id="@+id/butPelis"
