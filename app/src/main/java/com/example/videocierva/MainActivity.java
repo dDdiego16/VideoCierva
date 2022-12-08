@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnOpciones;
+    Button btnOpciones, btnPelis;
     ImageButton miPerfil;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnOpciones = findViewById(R.id.butOpc);
+        btnPelis = findViewById(R.id.butPelis);
         miPerfil = findViewById(R.id.miPerfilbtn);
 
         miPerfil.setOnClickListener(view -> {
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnOpciones.setOnClickListener((view -> {
             Intent intent = new Intent(MainActivity.this, OpcionesActivity.class);
+            startActivity(intent);
+        }));
+
+        btnPelis.setOnClickListener((view -> {
+            Intent intent = new Intent(MainActivity.this, PelisActivity.class);
             startActivity(intent);
         }));
 
