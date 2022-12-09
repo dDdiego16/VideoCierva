@@ -1,6 +1,24 @@
 <resources>
     <string name="app_name">VideoCierva</string>
+    <string name="email">Email</string>
+    <string name="contra">Contraseña</string>
+    <string name="login">Login</string>
+    <string name="todo">TODO</string>
+    <string name="pelis">PELICULAS</string>
+    <string name="series">SERIES</string>
+    <string name="opciones">OPCIONES</string>
+    <string name="informa">Información</string>
+    <string name="contact">Contacto</string>
+    <string name="exit_app">Salir De La App</string>
     <string name="informacion"> Esta es una aplicación desarrollada por Diego Hoyos.
         Consiste en una app que muestra las peliculas y series disponibles de un Videoclub.
         IES Ingeniero De La Cierva --- Version 1.0 </string>
+    <string name="nombrePerfil">Nombre:</string>
+    <string name="correoPerfil">Correo:</string>
+    <string name="contraPerfil">Contraseña:</string>
+    <string name="exit_sesion">Cerrar Sesión</string>
+    <string name="titulo">Título</string>
+    <string name="age">Año</string>
+    <string name="categoria">Categoria</string>
+    <string name="disponible">Disponible</string>
 </resources>
