@@ -3,7 +3,6 @@ package com.example.videocierva;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -18,65 +17,65 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PelisActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class SeriesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     SearchView txtBuscar;
-    private static final String URL_pelis = "http://192.168.1.83/dam/pelis.php";
-    List<Pelicula> peliculaList;
+    private static final String URL_series = "http://192.168.1.83/dam/series.php";
+    List<Serie> seriesList;
     RecyclerView recyclerView;
-    AdapterPelis mAdapter;
+    AdapterSeries mAdapter;
     ImageButton miPerfil;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pelis);
+        setContentView(R.layout.activity_series);
 
-        txtBuscar = findViewById(R.id.buscadorPelis);
-        recyclerView = findViewById(R.id.recyclerViewPelis);
+        txtBuscar = findViewById(R.id.buscadorSeries);
+        recyclerView = findViewById(R.id.recyclerViewSeries);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         miPerfil = findViewById(R.id.miPerfilbtn);
 
         miPerfil.setOnClickListener(view -> {
-            Intent intent = new Intent(PelisActivity.this, PerfilActivity.class);
+            Intent intent = new Intent(SeriesActivity.this, PerfilActivity.class);
             startActivity(intent);
         });
-        
-        peliculaList = new ArrayList<>();
-        loadpelis();
+
+        seriesList = new ArrayList<>();
+        loadseries();
 
         txtBuscar.setOnQueryTextListener(this);
-        
+
     }
 
-    private void loadpelis() {
+    private void loadseries() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_pelis,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_series,
                 response -> {
                     try {
                         JSONArray array = new JSONArray(response);
 
                         for (int i = 0; i < array.length(); i++) {
 
-                            JSONObject peli = array.getJSONObject(i);
+                            JSONObject serie = array.getJSONObject(i);
 
-                            peliculaList.add(new Pelicula(
-                                    peli.getString("name_peli"),
-                                    peli.getInt("age_peli"),
-                                    peli.getString("category_peli"),
-                                    peli.getString("image_peli"),
-                                    peli.getString("disponible_peli")
+                            seriesList.add(new Serie(
+                                    serie.getString("name_serie"),
+                                    serie.getInt("age_serie"),
+                                    serie.getInt("season_serie"),
+                                    serie.getString("category_serie"),
+                                    serie.getString("image_serie"),
+                                    serie.getString("disponible_serie")
                             ));
                         }
 
-                        mAdapter = new AdapterPelis(PelisActivity.this, peliculaList);
+                        mAdapter = new AdapterSeries(SeriesActivity.this, seriesList);
                         recyclerView.setAdapter(mAdapter);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Toast.makeText(PelisActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
+                }, error -> Toast.makeText(SeriesActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
         Volley.newRequestQueue(this).add(stringRequest);
     }
 

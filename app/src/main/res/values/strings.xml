@@ -21,4 +21,8 @@
     <string name="age">Año</string>
     <string name="categoria">Categoria</string>
     <string name="disponible">Disponible</string>
+    <string name="temporada">Temporada</string>
+    <string name="peliculasM">Películas</string>
+    <string name="seriesM">Series</string>
+    <string name="opcionesM">Opciones</string>
 </resources>

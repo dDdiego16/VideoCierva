@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".OpcionesActivity">
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/primary"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opcionesM"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:paddingStart="15dp"/>
+
+        <ImageButton
+            android:id="@+id/miPerfilbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/primary"
+            android:paddingEnd="15dp"
+            android:src="@drawable/perfil"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="@string/todo" />
+
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
